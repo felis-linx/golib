@@ -3,26 +3,15 @@ package soapic
 import (
 	"bytes"
 	"encoding/xml"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 )
-
-var debug = false
 
 // Call ( action string, payload interface{}, result *interface{}) (err error)
 // Call send SOAP request
 func (client Client) Call(action string, payload interface{}, requestID string) (result []byte, err error) {
 	data, err := xml.MarshalIndent(payload, "", "  ")
 	if err != nil {
-		return
-	}
-
-	fmt.Println("Request:\n", string(data))
-	// requestLog, _ := getMaskedLog(client.url, action, requestID, payload)
-	// noty.Info(string(requestLog), fmt.Sprintf("%s Request: %s", client.trace, action), &requestID)
-
-	if debug == true {
 		return
 	}
 
@@ -46,12 +35,5 @@ func (client Client) Call(action string, payload interface{}, requestID string) 
 	}
 	defer response.Body.Close()
 
-	// fmt.Println(string(bodyBytes))
-	// err = xml.Unmarshal(responsePayload, &result)
-	// if err != nil {
-	// 	return
-	// }
-
-	fmt.Println("Response:\n", string(result))
 	return
 }

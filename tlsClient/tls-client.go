@@ -86,19 +86,5 @@ func New(certFile, keyFile string, passPhrase *string) (client *http.Client, err
 	transport := &http.Transport{TLSClientConfig: tlsConfig}
 	client = &http.Client{Transport: transport}
 
-	// conn, err := tls.Dial("tcp", "acqapi-test.tinkoff.ru:80", tlsConfig)
-	// if err != nil {
-	// 	log.Fatalf("client: dial: %s", err)
-	// }
-	// defer conn.Close()
-	// log.Println("client: connected to: ", conn.RemoteAddr())
-	// state := conn.ConnectionState()
-	// for _, v := range state.PeerCertificates {
-	// 	fmt.Println("Client: Server public key is:")
-	// 	fmt.Println(x509.MarshalPKIXPublicKey(v.PublicKey))
-	// }
-	// log.Println("client: handshake: ", state.HandshakeComplete)
-	// log.Println("client: mutual: ", state.NegotiatedProtocolIsMutual)
-
 	return
 }
