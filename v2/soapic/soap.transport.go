@@ -5,6 +5,8 @@ import (
 	"encoding/xml"
 	"io/ioutil"
 	"net/http"
+
+	_ "github.com/felis-linx/golib/v2/utils"
 )
 
 // Call ( action string, payload interface{}, result *interface{}) (err error)
